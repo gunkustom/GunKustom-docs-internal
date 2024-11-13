@@ -1,11 +1,22 @@
 .features {
   display: flex;
+  justify-content: center;
   align-items: center;
-  padding: 2rem 0;
-  width: 100%;
+  min-height: 60vh; /* Reduced height to take less space on the page */
+  padding: 20px 0; /* Add some padding to the top and bottom */
+}
+
+.centerFeature {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px; /* Reduced padding */
 }
 
 .featureSvg {
-  height: 200px;
-  width: 200px;
+  max-width: 150px; /* Adjusted size for a more compact appearance */
+  height: auto;
+  margin-bottom: 10px; /* Reduced space below the SVG */
 }

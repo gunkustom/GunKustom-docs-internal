@@ -1,65 +1,46 @@
-import clsx from 'clsx';
-import Heading from '@theme/Heading';
-import styles from './styles.module.css';
+import clsx from "clsx";
+import Heading from "@theme/Heading";
+import styles from "./styles.module.css";
 
+// Define the type for a feature item, making Svg optional
 type FeatureItem = {
   title: string;
-  Svg: React.ComponentType<React.ComponentProps<'svg'>>;
-  description: JSX.Element;
+  Svg?: React.ComponentType<React.ComponentProps<"svg">>; // Svg is optional
+  description?: JSX.Element; // description is optional
 };
 
+// Updated FeatureList to include your SVG logo
 const FeatureList: FeatureItem[] = [
   {
-    title: 'Easy to Use',
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
-    description: (
-      <>
-        Docusaurus was designed from the ground up to be easily installed and
-        used to get your website up and running quickly.
-      </>
-    ),
-  },
-  {
-    title: 'Focus on What Matters',
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
-    description: (
-      <>
-        Docusaurus lets you focus on your docs, and we&apos;ll do the chores. Go
-        ahead and move your docs into the <code>docs</code> directory.
-      </>
-    ),
-  },
-  {
-    title: 'Powered by React',
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
-    description: (
-      <>
-        Extend or customize your website layout by reusing React. Docusaurus can
-        be extended while reusing the same header and footer.
-      </>
-    ),
+    title: "", // No title
+    Svg: require("@site/static/img/gunkustom.svg").default, // Path to your SVG logo
   },
 ];
 
-function Feature({title, Svg, description}: FeatureItem) {
+// Feature component with centered styling for Svg and title
+function Feature({ title, Svg, description }: FeatureItem) {
   return (
-    <div className={clsx('col col--4')}>
+    <div className={clsx("col col--12", styles.centerFeature)}>
       <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+        {Svg && <Svg className={styles.featureSvg} role="img" />}{" "}
+        {/* Render the SVG */}
       </div>
       <div className="text--center padding-horiz--md">
-        <Heading as="h3">{title}</Heading>
-        <p>{description}</p>
+        {title && <Heading as="h3">{title}</Heading>}{" "}
+        {/* Only render title if it exists */}
+        {description && <p>{description}</p>}{" "}
+        {/* Only render description if it exists */}
       </div>
     </div>
   );
 }
 
+// Export the HomepageFeatures component
 export default function HomepageFeatures(): JSX.Element {
   return (
     <section className={styles.features}>
       <div className="container">
-        <div className="row">
+        <div className="row justify-center align-center">
           {FeatureList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
