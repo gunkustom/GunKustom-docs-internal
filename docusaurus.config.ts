@@ -138,6 +138,16 @@ const config: Config = {
       darkTheme: prismThemes.dracula,
     },
   } satisfies Preset.ThemeConfig,
+
+  plugins: [
+    [
+      "docusaurus-plugin-drawio",
+      {
+        output: "png", // Choose either "svg" or "png"
+        quality: 100,  // Quality only applies to PNG
+      },
+    ],
+  ],
 };
 
 export default config;
